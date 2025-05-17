@@ -8,6 +8,8 @@ flask = "*"
 flask-cors = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
+flask-jwt-extended = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
