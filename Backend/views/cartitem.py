@@ -6,13 +6,13 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 cartitem_bp = Blueprint('cartitem_bp', __name__)
 @cartitem_bp.route('/cartitems', methods=['GET'])
-@jwt_required()
+
 def get_cartitems():
     current_user = get_jwt_identity()
     cartitems = CartItem.query.filter_by(user_id=current_user).all()
     return jsonify([cartitem.to_dict() for cartitem in cartitems]), 200
 @cartitem_bp.route('/cartitems/<int:cartitem_id>', methods=['GET'])
-@jwt_required()
+
 def get_cartitem(cartitem_id):
     current_user = get_jwt_identity()
     cartitem = CartItem.query.filter_by(id=cartitem_id, user_id=current_user).first()
@@ -21,7 +21,7 @@ def get_cartitem(cartitem_id):
     return jsonify(cartitem.to_dict()), 200
 
 @cartitem_bp.route('/cartitems', methods=['POST'])
-@jwt_required()
+
 def add_cartitem():
     current_user = get_jwt_identity()
     data = request.get_json()
@@ -38,7 +38,7 @@ def add_cartitem():
     return jsonify(new_cartitem.to_dict()), 201
 
 @cartitem_bp.route('/cartitems/<int:cartitem_id>', methods=['PUT'])
-@jwt_required()
+
 def update_cartitem(cartitem_id):
     current_user = get_jwt_identity()
     data = request.get_json()
@@ -57,7 +57,7 @@ def update_cartitem(cartitem_id):
     return jsonify(cartitem.to_dict()), 200
 
 @cartitem_bp.route('/cartitems/<int:cartitem_id>', methods=['DELETE'])
-@jwt_required()
+
 def delete_cartitem(cartitem_id):
     current_user = get_jwt_identity()
     cartitem = CartItem.query.filter_by(id=cartitem_id, user_id=current_user).first()

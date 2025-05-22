@@ -2,18 +2,18 @@ from flask import jsonify, request, Blueprint
 from sqlalchemy import func, extract
 from models import db, Product
 from datetime import datetime
-from flask_jwt_extended import jwt_required, get_jwt_identity
+
 
 product_bp = Blueprint('product_bp', __name__)
 
 @product_bp.route('/products', methods=['GET'])
-@jwt_required()
+
 def get_products():
     products = Product.query.all()
     return jsonify([product.to_dict() for product in products]), 200
 
 @product_bp.route('/products/<int:product_id>', methods=['GET'])
-@jwt_required()
+
 def get_product(product_id):
     product = Product.query.get(product_id)
     if not product:
@@ -21,7 +21,7 @@ def get_product(product_id):
     return jsonify(product.to_dict()), 200
 
 @product_bp.route('/products', methods=['POST'])
-@jwt_required()
+
 def add_product():
     data = request.get_json()
     name = data.get('name')
@@ -39,7 +39,7 @@ def add_product():
     return jsonify(new_product.to_dict()), 201
 
 @product_bp.route('/products/<int:product_id>', methods=['PUT'])
-@jwt_required()
+
 def update_product(product_id):
     data = request.get_json()
     name = data.get('name')
@@ -62,7 +62,7 @@ def update_product(product_id):
     return jsonify(product.to_dict()), 200
 
 @product_bp.route('/products/<int:product_id>', methods=['DELETE'])
-@jwt_required()
+
 def delete_product(product_id):
     product = Product.query.get(product_id)
     if not product:
