@@ -1,0 +1,92 @@
+.homepage-container {
+  padding-top: 4rem; /* to push content below navbar */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Banner Layout */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem;
+  box-sizing: border-box;
+  gap: 2rem;
+}
+
+/* Left: Image */
+.banner-image {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem;
+}
+
+/* Right: Text */
+.banner-text {
+  width: 50%;
+  color: rgb(20, 16, 16);
+  text-align: left;
+}
+
+.banner-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.banner-text p {
+  font-size: 1.25rem;
+  color: #4b5563;
+}
+
+/* Products Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f3f4f6; /* gray-100 */
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 5px 1px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 8px 10px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  height: 16rem;
+  object-fit: contain;
+  width: 100%;
+}
+
+.product-name {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+.sold-out-btn {
+  margin-top: 0.5rem;
+  padding: 0.25rem 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}

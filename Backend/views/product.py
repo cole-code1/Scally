@@ -27,12 +27,14 @@ def add_product():
     name = data.get('name')
     description = data.get('description')
     price = data.get('price')
-    category_id = data.get('category_id')
+    image_url = data.get('image_url')
+    in_stock = data.get('in_stock', True)
 
-    if not name or not description or not price or not category_id:
-        return jsonify({"message": "Name, description, price, and category ID are required"}), 400
 
-    new_product = Product(name=name, description=description, price=price, category_id=category_id)
+    if not name or not description or not price :
+        return jsonify({"message": "Name, description and price are required"}), 400
+
+    new_product = Product(name=name, description=description, price=price, image_url=image_url, in_stock=in_stock)
     db.session.add(new_product)
     db.session.commit()
 
@@ -45,9 +47,11 @@ def update_product(product_id):
     name = data.get('name')
     description = data.get('description')
     price = data.get('price')
-    category_id = data.get('category_id')
+    image_url = data.get('image_url')
+    in_stock = data.get('in_stock', True)
+    
 
-    if not name or not description or not price or not category_id:
+    if not name or not description or not price :
         return jsonify({"message": "Name, description, price, and category ID are required"}), 400
 
     product = Product.query.get(product_id)
@@ -57,7 +61,8 @@ def update_product(product_id):
     product.name = name
     product.description = description
     product.price = price
-    product.category_id = category_id
+    product.image_url = image_url
+    product.in_stock = in_stock
     db.session.commit()
     return jsonify(product.to_dict()), 200
 

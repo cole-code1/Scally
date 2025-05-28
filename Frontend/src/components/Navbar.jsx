@@ -1,40 +1,44 @@
 import React from 'react';
-import { ShoppingCart, HelpCircle, Search } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
+import { Menu, Search, ShoppingCart } from 'lucide-react';
+import './Navbar.css'; // Ensure this is imported
+import logo from '../assets/logo.png'; // Adjust the path as necessary
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-white shadow-md">
-      {/* Logo */}
-      <div className="text-xl font-bold">LOGO</div>
+    <div className="navbar-wrapper">
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="navbar-inner">
+            {/* Menu Icon */}
+            <div className="navbar-left">
+              <Menu className="menu-icon" />
+            </div>
 
-      {/* Navigation Links */}
-      <div className="flex space-x-6 text-sm font-medium text-gray-700">
-        {['Men', 'Women', 'Kids', 'Accessories', 'Sale'].map(link => (
-          <a href={`#${link.toLowerCase()}`} key={link} className="hover:text-black">
-            {link}
-          </a>
-        ))}
-      </div>
+            {/* Logo */}
+            <Link to="/" className="navbar-logo">
+              <img src={logo} alt="Logo" className="navbar-logo" />
+            </Link>
+            {/* Right Section */}
+            <div className="navbar-right">
+              {/* Search */}
+              <div className="navbar-search-group">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="navbar-search-input"
+                />
+                <Search className="navbar-search-icon" />
+              </div>
 
-      {/* Search and Icons */}
-      <div className="flex items-center space-x-4">
-        {/* Search bar */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="border rounded-full px-4 py-1 text-sm pl-10"
-          />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
+              {/* Cart */}
+              <Link to="/cart" className="navbar-cart-link">
+                <ShoppingCart className="cart-icon" />
+              </Link>
+            </div>
+          </div>
         </div>
-
-        {/* Cart Icon */}
-        <ShoppingCart className="w-5 h-5 cursor-pointer" />
-
-        {/* Help Icon */}
-        <HelpCircle className="w-5 h-5 cursor-pointer" />
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

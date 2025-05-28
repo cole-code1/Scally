@@ -8,9 +8,11 @@ from datetime import datetime
 metadata = MetaData()
 db = SQLAlchemy(metadata=metadata)
 
-class Category(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True, nullable=False)
+
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+db = SQLAlchemy()
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,15 +21,16 @@ class Product(db.Model):
     price = db.Column(db.Numeric(10, 2), nullable=False)
     image_url = db.Column(db.String(200))
     in_stock = db.Column(db.Boolean, default=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-    category = db.relationship('Category', backref=db.backref('products', lazy=True))
+
 
 class CartItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    session_id = db.Column(db.String(100), nullable=False)  # from Flask session
+    session_id = db.Column(db.String(100), nullable=False)  # From Flask session
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     quantity = db.Column(db.Integer, default=1)
+
     product = db.relationship('Product')
+
 
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)

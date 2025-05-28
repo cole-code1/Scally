@@ -26,7 +26,6 @@ jwt.init_app(app)
 from views import *
 
 
-app.register_blueprint(category_bp)
 app.register_blueprint(product_bp)
 app.register_blueprint(cartitem_bp)
 app.register_blueprint(transaction_bp)

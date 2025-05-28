@@ -1,0 +1,125 @@
+/* index.css */
+
+.navbar-wrapper {
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: #2b292988; /* Tailwind red-400 or customize */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e5e7eb; /* gray-200 */
+}
+
+.navbar-container {
+  max-width: 80rem; /* Tailwind max-w-7xl */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem; /* h-16 */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar-logo {
+    width: 20rem; /* Tailwind w-32 */
+  height: 17rem; /* Tailwind h-8 */
+    padding: 0.5rem;
+}
+
+.navbar-logo:hover {
+  animation: spin 3s linear infinite;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-search-group {
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .navbar-search-group {
+    display: block;
+  }
+}
+
+.navbar-search-input {
+  width: 16rem;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #000;
+}
+
+.navbar-search-group:hover .navbar-search-input {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: #6b7280; /* gray-500 */
+}
+
+.navbar-cart-link {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.navbar-cart-link:hover {
+  transform: scale(1.1);
+}
+
+.cart-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(255, 233, 233, 0.856); /* semi-transparent black to match banner */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: none;
+  border-bottom: none;
+}
+
