@@ -5,6 +5,8 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from flask_cors import CORS
 
+import cloudinary
+import os
 
 
 app = Flask(__name__)
@@ -22,6 +24,12 @@ jwt = JWTManager(app)
 jwt.init_app(app)
 
 
+cloudinary.config(
+        cloud_name='daqtttdb0',
+        api_key='656131899838249',
+        api_secret='9ZiO0-pb58fK462foixDJ6dzcSw'
+    )
+
 # import all functions in views
 from views import *
 
@@ -29,6 +37,7 @@ from views import *
 app.register_blueprint(product_bp)
 app.register_blueprint(cartitem_bp)
 app.register_blueprint(transaction_bp)
+app.register_blueprint(image_bp)
 
 @jwt.token_in_blocklist_loader
 def check_if_token_revoked(jwt_header, jwt_payload: dict) -> bool:
